@@ -1,58 +1,58 @@
 package com.hackathon.masterguide;
 
-import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.os.Bundle;
 import android.view.View;
-import android.widget.DatePicker;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
-import java.util.Calendar;
+import com.hackathon.masterguide.core.LocationService;
+import com.hackathon.masterguide.core.LocationServiceFactory;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main3Activity extends AppCompatActivity {
+
+    private LocationService service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        service = LocationServiceFactory.instance().getService();
+        List<String> countries = service.getCountries();
+
+        final Spinner countrySpinner = (Spinner) findViewById(R.id.countrySpinner);
+        final Spinner citySpinner = (Spinner) findViewById(R.id.citySpinner);
+
+        final ArrayAdapter countryAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, countries.toArray());
+        countrySpinner.setAdapter(countryAdapter);
+
+        final ArrayAdapter cityAdapter = new ArrayAdapter(Main3Activity.this, android.R.layout.simple_spinner_item);
+        citySpinner.setAdapter(cityAdapter);
+
+        countrySpinner.setSelection(0, false);
+
+        countrySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                List<String> cities = service.getCities((String) countrySpinner.getSelectedItem());
+                cityAdapter.clear();
+                cityAdapter.addAll(cities);
+                cityAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
             }
         });
 
-        DialogFragment newFragment = new DatePickerFragment();
-        newFragment.show(getSupportFragmentManager(), "datePicker");
+
     }
-
-    public static class DatePickerFragment extends DialogFragment
-            implements DatePickerDialog.OnDateSetListener {
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the current date as the default date in the picker
-            final Calendar c = Calendar.getInstance();
-            int year = c.get(Calendar.YEAR);
-            int month = c.get(Calendar.MONTH);
-            int day = c.get(Calendar.DAY_OF_MONTH);
-
-            // Create a new instance of DatePickerDialog and return it
-            return new DatePickerDialog(getActivity(), this, year, month, day);
-        }
-
-        public void onDateSet(DatePicker view, int year, int month, int day) {
-            // Do something with the date chosen by the user
-        }
-    }
-
 }
