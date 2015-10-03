@@ -1,5 +1,7 @@
 package com.hackathon.masterguide;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,12 +9,31 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+        @Override
+        protected Void doInBackground(Void... params) {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+            }
+            startActivity(new Intent(MainActivity.this, Main2Activity.class));
+            return null;
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        task.execute((Void[])null);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
