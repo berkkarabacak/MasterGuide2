@@ -87,7 +87,7 @@ public class Main3Activity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Main3Activity.this, Main3Activity.class);
+                Intent i = new Intent(Main3Activity.this, Main4Activity.class);
                 i.putExtra("COUNTRY", (String) countrySpinner.getSelectedItem());
                 i.putExtra("CITY", (String) citySpinner.getSelectedItem());
                 i.putExtra("START_DATE", btnStartDate.getText());
