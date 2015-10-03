@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.hackathon.masterguide.Main2Activity">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:text=""
+            android:id="@+id/traveller"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:background="@null"/>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="221dp"
+            android:text="Guide"
+            android:id="@+id/guide"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:background="@null"/>
+    </GridLayout>
+</RelativeLayout>
