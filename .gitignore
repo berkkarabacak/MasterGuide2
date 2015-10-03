@@ -21,3 +21,5 @@ MasterGuide.iml
 .idea/vcs.xml
 
 app/app.iml
+
+.idea/runConfigurations.xml
