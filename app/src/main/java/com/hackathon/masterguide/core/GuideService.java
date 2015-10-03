@@ -9,4 +9,6 @@ public interface GuideService {
 
     List<Guide> getGuides(String country, String city, Date startDate, Date endDate);
 
+    Guide getGuide(int id);
+
 }

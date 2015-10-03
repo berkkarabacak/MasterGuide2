@@ -10,14 +10,16 @@ public class Guide {
     private String country;
     private String city;
     private Date time;
+    private String detail;
 
-    public Guide(int id, String firstName, String lastName, String country, String city, Date time) {
+    public Guide(int id, String firstName, String lastName, String country, String city, Date time, String detail) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
         this.city = city;
         this.time = time;
+        this.detail = detail;
     }
 
     public int getId() {
@@ -70,6 +72,14 @@ public class Guide {
 
     public void setTime(Date time) {
         this.time = time;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 
 }

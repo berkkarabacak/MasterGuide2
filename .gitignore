@@ -6,12 +6,18 @@
 /build
 /captures
 
-.idea/gradle.xml
+.idea/*
+
+MasterGuide.iml
+
+.idea/.name
+
+.idea/encodings.xml
 
 .idea/gradle.xml
 
 .idea/misc.xml
 
-.idea/modules.xml
+.idea/vcs.xml
 
-MasterGuide.iml
+app/app.iml

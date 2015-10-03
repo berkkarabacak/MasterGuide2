@@ -15,7 +15,7 @@ public class StubGuideService implements GuideService {
     private final DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
 
     public StubGuideService() {
-        guides.add(new Guide(1, "Ahmet", "Yılmaz", "Türkiye", "İstanbul", getDate("03-10-2015")));
+        guides.add(new Guide(1, "Ahmet", "Yılmaz", "Türkiye", "İstanbul", getDate("03-10-2015"), "Merhaba, bunlar benim detayım."));
     }
 
     private Date getDate(String date) {
@@ -45,11 +45,21 @@ public class StubGuideService implements GuideService {
                     && cty.equalsIgnoreCase(city)
                     && time.before(endDate)
                     && time.after(startDate)) {
-                
+
                 guideList.add(g);
             }
         }
         return guideList;
+    }
+
+    @Override
+    public Guide getGuide(int id) {
+        for (Guide g : guides) {
+            if (g.getId() == id) {
+                return g;
+            }
+        }
+        return null;
     }
 
 }
