@@ -30,7 +30,26 @@ public class StubGuideService implements GuideService {
 
     @Override
     public List<Guide> getGuides(String country, String city, Date startDate, Date endDate) {
-        return null;
+        List<Guide> guideList = new ArrayList<Guide>();
+
+        for (Guide g : guides) {
+            String cntry = g.getCountry();
+            String cty = g.getCity();
+            Date time = g.getTime();
+
+            if (cntry == null || cty == null || time == null) {
+                continue;
+            }
+
+            if (cntry.equalsIgnoreCase(country)
+                    && cty.equalsIgnoreCase(city)
+                    && time.before(endDate)
+                    && time.after(startDate)) {
+                
+                guideList.add(g);
+            }
+        }
+        return guideList;
     }
 
 }
