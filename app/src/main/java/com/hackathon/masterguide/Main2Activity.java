@@ -19,7 +19,7 @@ public class Main2Activity extends AppCompatActivity {
         final Button button = (Button) findViewById(R.id.traveller);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(Main2Activity.this, Main3Activity.class));
+                startActivity(new Intent(Main2Activity.this, Main4Activity.class));
             }
         });
     }

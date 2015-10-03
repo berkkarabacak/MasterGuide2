@@ -15,7 +15,11 @@ public class StubGuideService implements GuideService {
     private final DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
 
     public StubGuideService() {
-        guides.add(new Guide(1, "Ahmet", "Yılmaz", "Türkiye", "İstanbul", getDate("03-10-2015"), "Merhaba, bunlar benim detayım."));
+        guides.add(new Guide(1, "Corina", "Ahrens", "Germany", "Berlin", getDate("03-10-2015"), "Merhaba, bunlar benim detayım."));
+        guides.add(new Guide(2, "Karl", "Kaiser", "Germany", "Berlin", getDate("03-10-2015"), "Merhaba, bunlar benim detayım."));
+        guides.add(new Guide(3, "Zanis", "Yılmaz", "Germany", "Berlin", getDate("03-10-2015"), "Merhaba, bunlar benim detayım."));
+        guides.add(new Guide(4, "Linnet", "Terry", "Germany", "Magdeburg", getDate("03-10-2015"), "Merhaba, bunlar benim detayım."));
+        guides.add(new Guide(5, "Rick", "Granovsky", "Germany", "Hamburg", getDate("03-10-2015"), "Merhaba, bunlar benim detayım."));
     }
 
     private Date getDate(String date) {
