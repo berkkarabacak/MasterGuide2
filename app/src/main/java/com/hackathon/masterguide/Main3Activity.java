@@ -1,10 +1,15 @@
 package com.hackathon.masterguide;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 
 import com.hackathon.masterguide.core.LocationService;
@@ -12,6 +17,7 @@ import com.hackathon.masterguide.core.LocationServiceFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 public class Main3Activity extends AppCompatActivity {
@@ -53,6 +59,27 @@ public class Main3Activity extends AppCompatActivity {
             }
         });
 
+        final DatePickerFragment startDateFragment = new DatePickerFragment();
+        Button btnStartDate = (Button) findViewById(R.id.startDate);
+        startDateFragment.setButton(btnStartDate);
+        btnStartDate.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                startDateFragment.show(getSupportFragmentManager(), "datePicker");
+            }
+        });
+
+        final DatePickerFragment endDateFragment = new DatePickerFragment();
+        Button btnEndDate = (Button) findViewById(R.id.endDate);
+        endDateFragment.setButton(btnEndDate);
+        btnEndDate.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                endDateFragment.show(getSupportFragmentManager(), "datePicker");
+            }
+        });
     }
+
 }

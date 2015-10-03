@@ -39,8 +39,19 @@
             android:id="@+id/startDate"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="38dp"
-            android:background="null" />
+            android:layout_marginTop="36dp"
+            android:background="@null"
+            android:gravity="center_vertical|left" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/endDate"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="36dp"
+            android:background="@null"
+            android:gravity="center_vertical|left" />
     </LinearLayout>
 
 </RelativeLayout>
