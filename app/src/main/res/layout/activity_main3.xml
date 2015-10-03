@@ -52,6 +52,16 @@
             android:layout_marginTop="36dp"
             android:background="@null"
             android:gravity="center_vertical|left" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="160dp"
+            android:id="@+id/search"
+            android:background="@null"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="top"
+            android:layout_marginTop="16dp" />
     </LinearLayout>
 
 </RelativeLayout>

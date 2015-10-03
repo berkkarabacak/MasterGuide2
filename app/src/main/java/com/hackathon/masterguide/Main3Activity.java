@@ -2,6 +2,7 @@ package com.hackathon.masterguide;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -60,7 +61,7 @@ public class Main3Activity extends AppCompatActivity {
         });
 
         final DatePickerFragment startDateFragment = new DatePickerFragment();
-        Button btnStartDate = (Button) findViewById(R.id.startDate);
+        final Button btnStartDate = (Button) findViewById(R.id.startDate);
         startDateFragment.setButton(btnStartDate);
         btnStartDate.setOnClickListener(new View.OnClickListener() {
 
@@ -71,13 +72,27 @@ public class Main3Activity extends AppCompatActivity {
         });
 
         final DatePickerFragment endDateFragment = new DatePickerFragment();
-        Button btnEndDate = (Button) findViewById(R.id.endDate);
+        final Button btnEndDate = (Button) findViewById(R.id.endDate);
         endDateFragment.setButton(btnEndDate);
         btnEndDate.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 endDateFragment.show(getSupportFragmentManager(), "datePicker");
+            }
+        });
+
+        Button btnSearch = (Button) findViewById(R.id.search);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Main3Activity.this, Main3Activity.class);
+                i.putExtra("COUNTRY", (String) countrySpinner.getSelectedItem());
+                i.putExtra("CITY", (String) citySpinner.getSelectedItem());
+                i.putExtra("START_DATE", btnStartDate.getText());
+                i.putExtra("END_DATE", btnEndDate.getText());
+                startActivity(i);
             }
         });
     }
