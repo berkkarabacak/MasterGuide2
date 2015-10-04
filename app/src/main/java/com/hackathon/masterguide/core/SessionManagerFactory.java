@@ -9,7 +9,7 @@ public class SessionManagerFactory {
         manager = new InMemorySessionManager();
     }
 
-    public SessionManagerFactory instance() {
+    public static SessionManagerFactory instance() {
         return INSTANCE;
     }
 

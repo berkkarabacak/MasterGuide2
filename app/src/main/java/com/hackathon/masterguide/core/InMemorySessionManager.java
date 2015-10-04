@@ -10,8 +10,8 @@ public class InMemorySessionManager implements SessionManager {
     private boolean auth = false;
 
     @Override
-    public boolean login(String userName, String password) {
-        if ("admin".equalsIgnoreCase(userName) && "admin".equalsIgnoreCase(password)) {
+    public boolean login(String email, String password) {
+        if ("admin@host.com".equalsIgnoreCase(email) && "admin".equalsIgnoreCase(password)) {
             auth = true;
             return true;
         }
