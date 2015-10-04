@@ -19,7 +19,7 @@ public class Main8Activity extends AppCompatActivity {
         button6.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Toast.makeText(getApplicationContext(), "umut", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Main8Activity.this, MainActivity.class));
+                startActivity(new Intent(Main8Activity.this, Main2Activity.class));
             }
         });
     }

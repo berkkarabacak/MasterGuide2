@@ -19,7 +19,7 @@
             android:inputType="textEmailAddress"
             android:ems="10"
             android:id="@+id/email"
-            android:layout_marginTop="170dp"
+            android:layout_marginTop="150dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp" />
 
@@ -31,13 +31,14 @@
             android:id="@+id/password"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="18dp" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="100dp"
             android:id="@+id/login"
-            android:background="@null"
+            android:background="@android:color/transparent"
+            android:visibility="visible"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="22dp"
