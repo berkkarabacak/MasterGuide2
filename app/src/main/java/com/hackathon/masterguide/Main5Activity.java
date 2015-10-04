@@ -13,11 +13,14 @@ import android.widget.Toast;
 
 import com.hackathon.masterguide.core.GuideService;
 import com.hackathon.masterguide.core.GuideServiceFactory;
+import com.hackathon.masterguide.core.SessionManager;
+import com.hackathon.masterguide.core.SessionManagerFactory;
 import com.hackathon.masterguide.domain.Guide;
 
 public class Main5Activity extends AppCompatActivity {
 
     private final GuideService service = GuideServiceFactory.instance().getService();
+    private final SessionManager manager = SessionManagerFactory.instance().getManager();
     private int id;
 
     @Override
@@ -29,7 +32,13 @@ public class Main5Activity extends AppCompatActivity {
         button5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Toast.makeText(getApplicationContext(), "umut", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Main5Activity.this, Main7Activity.class));
+                if (manager.isAuthenticated()) {
+                    startActivity(new Intent(Main5Activity.this, Main7Activity.class));
+                } else {
+                    Intent i = new Intent(Main5Activity.this, Main6Activity.class);
+                    i.putExtra(ActivityConstants.NEXT_PAGE, "Main7Activity");
+                    startActivity(i);
+                }
             }
         });
         Bundle extras = getIntent().getExtras();
