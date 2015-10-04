@@ -9,6 +9,6 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:background="@mipmap/logo_final">
+        android:background="@mipmap/page1_preview">
     </GridLayout>
 </RelativeLayout>
