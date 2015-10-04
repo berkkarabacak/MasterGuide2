@@ -22,7 +22,7 @@ public class Main6Activity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            nextPage = extras.getString("NEXT_PAGE");
+            nextPage = extras.getString(ActivityConstants.NEXT_PAGE);
         }
 
         Button btnSearch = (Button) findViewById(R.id.login);
@@ -35,7 +35,7 @@ public class Main6Activity extends AppCompatActivity {
                 if (manager.login(email, password)) {
                     if ("Main7Activity".equalsIgnoreCase(nextPage)) {
                         //FIXME
-                        startActivity(new Intent(Main6Activity.this, Main6Activity.class));
+                        startActivity(new Intent(Main6Activity.this, Main7Activity.class));
                     }
                 }
             }

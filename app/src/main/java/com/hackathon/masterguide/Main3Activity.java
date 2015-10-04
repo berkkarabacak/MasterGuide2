@@ -88,10 +88,10 @@ public class Main3Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Main3Activity.this, Main4Activity.class);
-                i.putExtra("COUNTRY", (String) countrySpinner.getSelectedItem());
-                i.putExtra("CITY", (String) citySpinner.getSelectedItem());
-                i.putExtra("START_DATE", btnStartDate.getText());
-                i.putExtra("END_DATE", btnEndDate.getText());
+                i.putExtra(ActivityConstants.COUNTRY, (String) countrySpinner.getSelectedItem());
+                i.putExtra(ActivityConstants.CITY, (String) citySpinner.getSelectedItem());
+                i.putExtra(ActivityConstants.START_DATE, btnStartDate.getText());
+                i.putExtra(ActivityConstants.END_DATE, btnEndDate.getText());
                 startActivity(i);
             }
         });

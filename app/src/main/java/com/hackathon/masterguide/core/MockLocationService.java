@@ -87,7 +87,7 @@ public class MockLocationService implements LocationService {
                 "Van",
                 "Yozgat",
                 "Zonguldak"));
-        
+
         cities.put("Germany", Arrays.asList(
                 "Berlin",
                 "Magdeburg",
