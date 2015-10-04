@@ -5,24 +5,45 @@
     android:layout_height="match_parent"
     xmlns:auto="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.hackathon.masterguide.Main7Activity">
+    android:paddingTop="30dp"
+    tools:context="com.hackathon.masterguide.Main7Activity"
+    android:background="#3F404A">
 
-    <com.simplify.android.sdk.CardEditor
-        android:id="@+id/card_editor"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        auto:iconColor="#666666"
-        auto:enabled="true"/>
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btnPay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:text="PAY"
-        android:layout_below="@+id/card_editor"
-        android:layout_alignParentEnd="true" />
+        <com.simplify.android.sdk.CardEditor
+            android:id="@+id/card_editor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            auto:iconColor="#FFFFFF"
+            auto:enabled="true"
+            android:translationZ="1dp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/chargePrice"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp" />
+
+        <Button
+            android:id="@+id/btnPay"
+            android:layout_width="fill_parent"
+            android:layout_height="160dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_below="@+id/card_editor"
+            android:layout_alignParentEnd="true"
+            android:translationZ="2dp"
+            android:background="@drawable/button_payment"
+            android:layout_marginTop="30dp" />
+
+    </LinearLayout>
 
 </RelativeLayout>

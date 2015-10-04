@@ -29,25 +29,29 @@ public class Main5Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main5);
 
         final Button button5 = (Button) findViewById(R.id.button5);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            id = extras.getInt("id");
+        }
+
         button5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Toast.makeText(getApplicationContext(), "umut", Toast.LENGTH_SHORT).show();
+                Guide guide = service.getGuide(new Integer(id));
                 if (manager.isAuthenticated()) {
-                    startActivity(new Intent(Main5Activity.this, Main7Activity.class));
+                    Intent i = new Intent(Main5Activity.this, Main7Activity.class);
+                    i.putExtra(ActivityConstants.PRICE, guide.getPrice());
+                    startActivity(i);
                 } else {
                     Intent i = new Intent(Main5Activity.this, Main6Activity.class);
                     i.putExtra(ActivityConstants.NEXT_PAGE, "Main7Activity");
+                    i.putExtra(ActivityConstants.PRICE, guide.getPrice());
                     startActivity(i);
                 }
             }
         });
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            int id=extras.getInt("id");
-        }
 
-       /* Guide guide = service.getGuide(new Integer(id));
-        ImageView IV = (ImageView) findViewById(R.id.imageView);
+        /* ImageView IV = (ImageView) findViewById(R.id.imageView);
         int j = getResources().getIdentifier("profiletop" + id, "drawable", getPackageName());
         IV.setImageResource( j );
         ImageView IV2 = (ImageView) findViewById(R.id.imageView2);

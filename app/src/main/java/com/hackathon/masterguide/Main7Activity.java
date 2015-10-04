@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.simplify.android.sdk.CardEditor;
@@ -29,11 +31,20 @@ public class Main7Activity extends AppCompatActivity {
 
     private CardEditor mCardEditor;
     private Button mPayButton;
+    private int price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main7);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            price = extras.getInt(ActivityConstants.PRICE);
+        }
+
+        TextView charged = (TextView) findViewById(R.id.chargePrice);
+        charged.setText(price + "€ Charge");
 
         Simplify.init("sbpb_ZTdmZTY0MjgtNzg5Mi00NzI2LTg0ZmQtMGRjMDAzZWE3YTQ0");
 
