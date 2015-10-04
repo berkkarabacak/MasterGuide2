@@ -52,15 +52,11 @@ public class Main4Activity extends ListActivity {
                 // TODO Auto-generated method stub
                 final int Slecteditem= itemname[+position];
                // Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(Main4Activity.this, Main5Activity.class);
+                i.putExtra("id",Slecteditem);
+                startActivity(i);
 
-                final Button button3 = (Button) findViewById(R.id.traveller);
-                button3.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        Intent i = new Intent(Main4Activity.this, Main5Activity.class);
-                        i.putExtra("id",Slecteditem);
-                        startActivity(i);
-                    }
-                });
+
 
             }
         });

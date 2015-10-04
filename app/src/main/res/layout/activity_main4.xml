@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:fitsSystemWindows="true"
-    tools:context="com.hackathon.masterguide.Main4Activity">
+    tools:context="com.hackathon.masterguide.Main4Activity"
+    android:background="#3f404a">
 
     <ListView
-        android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true"
+        android:id="@android:id/list">
     </ListView>
 </RelativeLayout>
