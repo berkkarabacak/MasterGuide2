@@ -9,7 +9,7 @@ public class GuideServiceFactory {
         service = new StubGuideService();
     }
 
-    public GuideServiceFactory instance() {
+    public static GuideServiceFactory instance() {
         return INSTANCE;
     }
 

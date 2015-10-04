@@ -2,6 +2,7 @@ package com.hackathon.masterguide;
 
 import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,12 +19,12 @@ public class Main4Activity extends ListActivity {
 
     ListView list;
 
-    String[] itemname = {
-            "Safari",
-            "Camera",
-            "Global",
-            "FireFox",
-            "UC Browser"
+    Integer[] itemname = {
+            1,
+            2,
+            3,
+            4,
+            5
     };
     Integer[] imgid={
             R.mipmap.profilepic1,
@@ -48,8 +50,17 @@ public class Main4Activity extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // TODO Auto-generated method stub
-                String Slecteditem= itemname[+position];
-                Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
+                final int Slecteditem= itemname[+position];
+               // Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
+
+                final Button button3 = (Button) findViewById(R.id.traveller);
+                button3.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View v) {
+                        Intent i = new Intent(Main4Activity.this, Main5Activity.class);
+                        i.putExtra("id",Slecteditem);
+                        startActivity(i);
+                    }
+                });
 
             }
         });

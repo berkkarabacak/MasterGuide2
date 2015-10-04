@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import com.hackathon.masterguide.R;
 
-public class CustomListAdapter extends ArrayAdapter<String> {
+public class CustomListAdapter extends ArrayAdapter<Integer> {
 
     private final Activity context;
-    private final String[] itemname;
+    private final Integer[] itemname;
     private final Integer[] imgid;
 
-    public CustomListAdapter(Activity context, String[] itemname, Integer[] imgid) {
+    public CustomListAdapter(Activity context, Integer[] itemname, Integer[] imgid) {
         super(context, R.layout.mylist, itemname);
         // TODO Auto-generated constructor stub
 
@@ -35,7 +35,7 @@ public class CustomListAdapter extends ArrayAdapter<String> {
 
 //        txtTitle.setText(itemname[position]);
         imageView.setImageResource(imgid[position]);
-//        extratxt.setText("Description "+itemname[position]);
+//        extratxt.setText("Description " + itemname[position]);
         return rowView;
 
     };
