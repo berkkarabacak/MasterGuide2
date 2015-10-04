@@ -10,15 +10,17 @@ public class Guide {
     private String country;
     private String city;
     private Date time;
+    private int price;
     private String detail;
 
-    public Guide(int id, String firstName, String lastName, String country, String city, Date time, String detail) {
+    public Guide(int id, String firstName, String lastName, String country, String city, Date time, int price, String detail) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
         this.city = city;
         this.time = time;
+        this.price = price;
         this.detail = detail;
     }
 
@@ -80,6 +82,14 @@ public class Guide {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
 }

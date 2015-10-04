@@ -21,7 +21,8 @@ public class MockLocationService implements LocationService {
         countries.add("USA");
         countries.add("Turkey");
 
-        cities.put("Turkey", Arrays.asList("Adana",
+        cities.put("Turkey", Arrays.asList(
+                "Adana",
                 "Afyonkarahisar",
                 "Aksaray",
                 "Ankara",
@@ -86,6 +87,11 @@ public class MockLocationService implements LocationService {
                 "Van",
                 "Yozgat",
                 "Zonguldak"));
+        
+        cities.put("Germany", Arrays.asList(
+                "Berlin",
+                "Magdeburg",
+                "Hamburg"));
     }
 
     public List<String> getCountries() {
