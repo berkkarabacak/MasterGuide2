@@ -25,4 +25,5 @@ dependencies {
     compile 'com.android.support:design:23.0.1'
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.simplify:simplify-android:2.0.2'
+    compile group: 'cz.msebera.android' , name: 'httpclient', version: '4.4.1.1'
 }
