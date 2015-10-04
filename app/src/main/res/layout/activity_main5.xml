@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:fitsSystemWindows="true"
+    tools:context="com.hackathon.masterguide.Main5Activity"
+    android:background="@mipmap/page5_preview3">
+
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:layout_width="388dp"
+            android:layout_height="143dp"
+            android:id="@+id/button5"
+            android:layout_row="27"
+            android:layout_column="3"
+            android:background="@android:color/transparent"
+            android:visibility="visible" />
+
+    </GridLayout>
+</RelativeLayout>
