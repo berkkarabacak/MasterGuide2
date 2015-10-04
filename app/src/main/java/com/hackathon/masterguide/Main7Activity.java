@@ -1,5 +1,8 @@
 package com.hackathon.masterguide;
 
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,52 +15,20 @@ import com.simplify.android.sdk.CardEditor;
 import com.simplify.android.sdk.CardToken;
 import com.simplify.android.sdk.Simplify;
 
-import java.io.ByteArrayOutputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import cz.msebera.android.httpclient.HttpResponse;
-import cz.msebera.android.httpclient.HttpStatus;
-import cz.msebera.android.httpclient.StatusLine;
-import cz.msebera.android.httpclient.client.ClientProtocolException;
 import cz.msebera.android.httpclient.client.HttpClient;
-import cz.msebera.android.httpclient.client.ResponseHandler;
 import cz.msebera.android.httpclient.client.methods.HttpGet;
-import cz.msebera.android.httpclient.impl.client.BasicResponseHandler;
 import cz.msebera.android.httpclient.impl.client.DefaultHttpClient;
 
 public class Main7Activity extends AppCompatActivity {
 
     private CardEditor mCardEditor;
     private Button mPayButton;
-
-    private final AsyncTask<String, String, String> task = new AsyncTask<String, String, String>() {
-        @Override
-        protected String doInBackground(String... params) {
-            String url = "http://localhost:8080/service?token=" + params[0] + "&amount=" + 10;
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpResponse response;
-            String responseString = null;
-            try {
-                response = httpclient.execute(new HttpGet(url));
-                StatusLine statusLine = response.getStatusLine();
-                if(statusLine.getStatusCode() == HttpStatus.SC_OK){
-                    ByteArrayOutputStream out = new ByteArrayOutputStream();
-                    response.getEntity().writeTo(out);
-                    responseString = out.toString();
-                    out.close();
-                } else{
-                    //Closes the connection.
-                    response.getEntity().getContent().close();
-                    throw new IOException(statusLine.getReasonPhrase());
-                }
-            } catch (ClientProtocolException e) {
-                //TODO Handle problems..
-            } catch (IOException e) {
-                //TODO Handle problems..
-            }
-            return responseString;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,30 +64,9 @@ public class Main7Activity extends AppCompatActivity {
 
             @Override
             public void onSuccess(CardToken cardToken) {
-                Toast.makeText(Main7Activity.this, cardToken.getId(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Main7Activity.this, cardToken.getId(), Toast.LENGTH_SHORT).show();
 
-                task.execute(cardToken.getId());
-                /*
-                RequestQueue queue = Volley.newRequestQueue(Main7Activity.this);
-
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://localhost:8080/service?token=" + cardToken.getId() + "&amount=" + 10,
-                        new Response.Listener<String>() {
-
-                    @Override
-                    public void onResponse(String response) {
-
-                    }
-                }, new Response.ErrorListener() {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                    }
-                });
-
-                queue.add(stringRequest);
-
-                queue.start();
-                */
+                new HttpAsyncTask().execute(cardToken.getId());
 
                 mPayButton.setEnabled(true);
             }
@@ -127,6 +77,68 @@ public class Main7Activity extends AppCompatActivity {
                 mPayButton.setEnabled(true);
             }
         });
+    }
+
+    public static String GET(String url){
+        InputStream inputStream = null;
+        String result = "";
+        try {
+
+            // create HttpClient
+            HttpClient httpclient = new DefaultHttpClient();
+
+            // make GET request to the given URL
+            HttpResponse httpResponse = httpclient.execute(new HttpGet(url));
+
+            // receive response as inputStream
+            inputStream = httpResponse.getEntity().getContent();
+
+            // convert inputstream to string
+            if(inputStream != null)
+                result = convertInputStreamToString(inputStream);
+            else
+                result = "Did not work!";
+
+        } catch (Exception e) {
+        }
+
+        return result;
+    }
+
+    private static String convertInputStreamToString(InputStream inputStream) throws IOException{
+        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
+        String line = "";
+        String result = "";
+        while((line = bufferedReader.readLine()) != null)
+            result += line;
+
+        inputStream.close();
+        return result;
+
+    }
+
+    public boolean isConnected(){
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(this.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected())
+            return true;
+        else
+            return false;
+    }
+
+    private class HttpAsyncTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... urls) {
+            String url = "http://localhost:8080/service?token=" + urls[0] + "&amount=" + 10;
+            return GET(url);
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            //Toast.makeText(getBaseContext(), "Received! " + String.valueOf(result), Toast.LENGTH_LONG).show();
+            startActivity(new Intent(Main7Activity.this, Main8Activity.class));
+        }
     }
 
 }
